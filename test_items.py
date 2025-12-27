@@ -18,11 +18,10 @@ expected_text = {
     "fi": "Lisää koriin" }
 
 def test_button_add_to_basket(browser, request):
-    user_language = request.config.getoption("--language")
-    browser = webdriver.Chrome()
-    browser.get(f"https://selenium1py.pythonanywhere.com/{user_language}/catalogue/coders-at-work_207/")
+    lang = (browser.user_language if hasattr(browser, 'user_language') else 'en-gb')
+    browser.get(f"https://selenium1py.pythonanywhere.com/{lang}/catalogue/coders-at-work_207/")
     button = browser.find_element(By.CSS_SELECTOR, ".btn-add-to-basket") 
     button_value = button.get_attribute("value")
-    assert button.get_attribute("value") == expected_text[user_language]
+    assert button.get_attribute("value") == expected_text[lang]
 
     browser.quit()
