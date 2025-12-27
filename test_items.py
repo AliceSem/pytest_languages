@@ -1,8 +1,4 @@
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 expected_text = {
     "ar": "أضف الى سلة التسوق",
@@ -22,6 +18,4 @@ def test_button_add_to_basket(browser, request):
     browser.get(f"https://selenium1py.pythonanywhere.com/{lang}/catalogue/coders-at-work_207/")
     button = browser.find_element(By.CSS_SELECTOR, ".btn-add-to-basket") 
     button_value = button.get_attribute("value")
-    assert button.get_attribute("value") == expected_text[lang]
-
-    browser.quit()
+    assert button_value == expected_text[lang]

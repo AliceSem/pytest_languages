@@ -15,7 +15,7 @@ def browser(request):
 
     browser = webdriver.Chrome(options=options)
     browser.user_language = user_language
-    print("\nstart browser in for localization testing..")
+    print(f"\nStart browser with language: {user_language}")
     yield browser
     print("\nquit browser..")
     browser.quit()
